@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="layout/layout :: head"></head>
+<body class="bg-gray-300">
+<header th:replace="layout/layout :: header"></header>
+<div th:if="${msg != null}" class="flex flex-row justify-center" id="tarjeta">
+    <div class="flex flex-row pl-4 py-2 gap-2 items-center border rounded-lg shadow overflow-hidden dark:bg-green-300 dark:border-violet-400 mt-6 w-5/12 opacity-50">
+        <span class="flex-shrink-0 inline-flex mx-3 item-center justify-center leading-none rounded-full dark:bg-green-300 dark:text-gray-900">
+            <ion-icon name="checkmark-circle"></ion-icon>
+        </span>
+        <div class="flex-1 p-2">
+            <p class="text-sm dark:text-gray-800" th:text="${msg}"></p>
+        </div>
+        <button type="button" class="ml-6 p-2 dark:text-gray-400" onclick="cerrar()">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-4 w-4">
+                <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+            </svg>
+        </button>
+    </div>
+</div>
+<div class="flex flex-row justify-center " id="alert">
+    <div class="flex flex-row pl-4 py-2 gap-2 items-center border rounded-lg shadow overflow-hidden dark:bg-green-300 dark:border-violet-400 mt-6 w-5/12 opacity-50" >
+        <span class="flex-shrink-0 inline-flex mx-3 item-center justify-center leading-none rounded-full dark:bg-green-300 dark:text-gray-900">
+            <ion-icon name="checkmark-circle"></ion-icon>
+        </span>
+        <div class="flex-1 p-2">
+            <p id="texto" class="text-sm dark:text-gray-800"></p>
+        </div>
+        <button type="button" class="ml-6 p-2 dark:text-gray-400" onclick="cerrarAlert()">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-4 w-4">
+                <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+            </svg>
+        </button>
+    </div>
+</div>
+<section class="p-6 text-gray-50">
+    <fieldset class="grid grid-cols-1 gap-6 p-6 rounded-md shadow-sm bg-gray-900 w-9/12 m-auto mb-36">
+        <div class="grid grid-cols-3">
+            <h2 class="text-2xl font-semibold mb-1 text-gray-100">Clientes</h2>
+            <div>
+                <span class="mr-8">Buscar por:</span>
+                <span onclick="asignarId('nombre')" id="nomrbe" class="hover:animate-pulse active:bg-green-300 active:text-gray-800 cursor-pointer rounded-full bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 dark:bg-gray-700 dark:text-green-400 border border-green-400">Nombre</span>
+                <span onclick="asignarId('email')" id="email" class="hover:animate-pulse active:bg-yellow-300 active:text-gray-800 cursor-pointer rounded-full bg-yellow-100 text-yellow-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-yellow-300 border border-yellow-300">Email</span>
+                <span onclick="asignarId('apellido')" id="apellido" class="hover:animate-pulse active:bg-pink-300 active:text-gray-800 cursor-pointer rounded-full bg-pink-100 text-pink-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-pink-400 border border-pink-400">Apellido</span>
+            </div>
+            <fieldset class="w-full space-y-1 text-gray-100 col-end-7">
+                <label for="SearchNombre" class="hidden" th:text="'Buscar Zapato'"></label>
+                <div class="relative">
+                    <span class="absolute inset-y-0 left-0 flex items-center pl-2">
+                        <button type="button" title="search" class="p-1 focus:outline-none focus:ring">
+                            <svg fill="currentColor" viewBox="0 0 512 512" class="w-4 h-4 text-gray-100">
+                                <path d="M479.6,399.716l-81.084-81.084-62.368-25.767A175.014,175.014,0,0,0,368,192c0-97.047-78.953-176-176-176S16,94.953,16,192,94.953,368,192,368a175.034,175.034,0,0,0,101.619-32.377l25.7,62.2L400.4,478.911a56,56,0,1,0,79.2-79.195ZM48,192c0-79.4,64.6-144,144-144s144,64.6,144,144S271.4,336,192,336,48,271.4,48,192ZM456.971,456.284a24.028,24.028,0,0,1-33.942,0l-76.572-76.572-23.894-57.835L380.4,345.771l76.573,76.572A24.028,24.028,0,0,1,456.971,456.284Z"></path>
+                            </svg>
+                        </button>
+                    </span>
+                    <input id="SearchNombre" type="search" name="search" placeholder="Search..." class="w-32 py-2 pl-10 text-sm rounded-md sm:w-auto focus:outline-none bg-gray-800 text-gray-100 focus:bg-violet-400 focus:border-violet-900 focus:placeholder-gray-900 focus:text-gray-900" onkeyup="buscar(null, true)">
+                </div>
+            </fieldset>
+        </div>
+    </div>
+        <div class="overflow-x-auto">
+            <table id="tabla" class="min-w-full text-xs rounded-lg text-gray-400">
+                <colgroup>
+                    <col>
+                    <col>
+                    <col>
+                    <col>
+                    <col>
+                    <col>
+                    <col class="w-24">
+                </colgroup>
+                <thead class="bg-gray-700">
+                <tr class="text-left">
+                    <th class="p-3">Id</th>
+                    <th class="p-3">Nombre</th>
+                    <th class="p-3">Apellido</th>
+                    <th class="p-3">Email</th>
+                    <th class="p-3">Facturación</th>
+                    <th class="p-3">Editar</th>
+                    <th class="p-3 pl-8">Eliminar</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr class="border-b border-opacity-20 border-gray-700 bg-gray-900" th:each="cliente: ${clientes}">
+                    <td class="p-3">
+                        <a th:href="@{/verclientes/}+${cliente.id}">
+                            <button type="button"
+                                    class="px-3 py-2 font-semibold rounded bg-violet-400 text-gray-800 hover:animate-pulse"
+                                    th:text="${cliente.id}"></button>
+                        </a>
+                    </td>
+                    <td id="nombre" class="p-3">
+                        <p th:text="${cliente.nombre}"></p>
+                    </td>
+                    <td class="p-3">
+                        <p th:text="${cliente.apellido}"></p>
+                    </td>
+                    <td class="p-3">
+                        <p th:text="${cliente.email}"></p>
+                    </td>
+                    <td>
+                        <a th:href="@{'/factura/forminfo/'} + ${cliente.id}">
+                            <button type="button" class="px-5 py-1 font-semibold rounded bg-gray-100 text-gray-800 hover:animate-pulse">Facturación</button>
+                        </a>
+                    </td>
+                    <td>
+                        <a th:href="@{/formclientes/} + ${cliente.id}">
+                            <button type="button"
+                                    class="px-5 py-1 font-semibold border rounded dark:border-gray-100 dark:text-gray-100 hover:animate-pulse">
+                                editar
+                            </button>
+                        </a>
+                    </td>
+                    <td class="p-3">
+                        <a th:href="@{/eliminar/} + ${cliente.id}">
+                            <button type="button"
+                                    class="px-6 py-1 font-semibold rounded bg-violet-400 text-gray-800 mr-8 hover:animate-pulse">
+                                eliminar
+                            </button>
+                        </a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <div class="flex flex-column justify-center w-full">
+                <a th:href="@{/formclientes}" class="w-3/12">
+                    <button type="button"
+                            class="px-8 py-3 font-semibold border rounded border-gray-900 bg-violet-400 w-full text-gray-900 hover:animate-pulse mt-1">
+                        Añadir Cliente
+                    </button>
+                </a>
+            </div>
+            <nav th:replace="paginator-nav :: paginator"></nav>
+            <div class="hidden">
+                <table id="lista" class="min-w-full text-xs rounded-lg text-gray-400">
+                    <colgroup>
+                        <col>
+                        <col>
+                        <col>
+                        <col>
+                        <col>
+                        <col>
+                        <col class="w-24">
+                    </colgroup>
+                    <thead class="bg-gray-700">
+                    <tr class="text-left">
+                        <th class="p-3">Id</th>
+                        <th class="p-3">Nombre</th>
+                        <th class="p-3">Apellido</th>
+                        <th class="p-3">Email</th>
+                        <th class="p-3">Facturación</th>
+                        <th class="p-3">Editar</th>
+                        <th class="p-3 pl-8">Eliminar</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr class="border-b border-opacity-20 border-gray-700 bg-gray-900" th:each="cliente: ${clientesList}">
+                        <td class="p-3">
+                            <a th:href="@{/verclientes/}+${cliente.id}">
+                                <button type="button"
+                                        class="px-3 py-2 font-semibold rounded bg-violet-400 text-gray-800 hover:animate-pulse"
+                                        th:text="${cliente.id}"></button>
+                            </a>
+                        </td>
+                        <td id="SearchNombre" class="p-3">
+                            <p th:text="${cliente.nombre}"></p>
+                        </td>
+                        <td id="SearchApellido" class="p-3">
+                            <p th:text="${cliente.apellido}"></p>
+                        </td>
+                        <td id="SearchEmail" class="p-3">
+                            <p th:text="${cliente.email}"></p>
+                        </td>
+                        <td>
+                            <a th:href="@{'/factura/forminfo/'} + ${cliente.id}">
+                                <button type="button" class="px-5 py-1 font-semibold rounded bg-gray-100 text-gray-800 hover:animate-pulse">Facturación</button>
+                            </a>
+                        </td>
+                        <td>
+                            <a th:href="@{/formclientes/} + ${cliente.id}">
+                                <button type="button"
+                                        class="px-5 py-1 font-semibold border rounded dark:border-gray-100 dark:text-gray-100 hover:animate-pulse">
+                                    editar
+                                </button>
+                            </a>
+                        </td>
+                        <td class="p-3">
+                            <a th:href="@{/eliminar/} + ${cliente.id}">
+                                <button type="button"
+                                        class="px-6 py-1 font-semibold rounded bg-violet-400 text-gray-800 mr-8 hover:animate-pulse">
+                                    eliminar
+                                </button>
+                            </a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </fieldset>
+</section>
+<footer th:replace="layout/layout :: footer"></footer>
+<script>
+    let alertaShow = false
+    let alert = $("#alert")
+    alert.css("display", "none")
+    const trTabla = $("#tabla tbody>tr")
+    const input = $("#SearchNombre")
+    const tr = $("#lista tbody>tr")
+    const td = $("#lista tbody>tr>td")
+    asignarId("nombre")
+    function buscar(valor, estado){
+        if (estado){
+            valor = input.val()
+        }
+        const table = $("#tabla")
+        const tdTabla = $("#tabla tbody>tr>td")
+        const trTablafun = $("#tabla tbody>tr")
+
+        let elementosEncontrados = []
+        for (let elemento of trTablafun){
+            if (elemento.parentNode !== null){
+                elemento.parentNode.removeChild(elemento)
+            }
+        }
+        if(valor !== ""){
+            for (let elemento of td){
+                if (elemento.id === input.id){
+                    if (elemento.innerText.toLowerCase().includes(valor.toLowerCase())){
+                        elementosEncontrados.push(elemento.parentElement)
+                    }
+                    else {
+                        for (let elementoTabla of tdTabla){
+                            if (elemento === elementoTabla){
+                                if (elemento.parentNode.parentNode !== null) {
+                                    elemento.parentNode.parentNode.removeChild(elemento.parentNode)
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            for (let elemento of elementosEncontrados){
+                table.append(elemento)
+            }
+        } else {
+            for (let elemento of trTablafun){
+                if (elemento.parentNode !== null){
+                    elemento.parentNode.removeChild(elemento)
+                }
+            }
+            for (let elemento of trTabla){
+                table.append(elemento)
+            }
+        }
+    }
+
+    function asignarId(id){
+        let texto = $("#texto")
+        switch (id){
+            case "nombre":
+                if (alertaShow){
+                    texto.text("Buscando por Nombre")
+                    alert.css("display", "")
+                }
+                alertaShow = true
+                input.id= "SearchNombre"
+                break
+            case "email":
+                texto.text("Buscando por Email")
+                alert.css("display", "")
+                input.id = "SearchEmail"
+                break
+            case "apellido":
+                texto.text("Buscando por Apellido")
+                alert.css("display", "")
+                input.id = "SearchApellido"
+                break
+        }
+    }
+    function cerrar(){
+        $('#tarjeta').css("display", "none")
+    }
+    function cerrarAlert(){
+        $('#alert').css("display", "none")
+    }
+</script>
+</body>
+</html>

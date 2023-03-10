@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="layout/layout :: head"></head>
+    <body class="bg-gray-300">
+        <header th:replace="layout/layout :: header"></header>
+        <div class="flex flex-column justify-center mt-1">
+            <div class="max-w-xs p-6 rounded-md shadow-md bg-gray-800 text-gray-50">
+                <img th:if="${#strings.length(zapato.imagen)>0}" th:src="${zapato.imagen}" th:alt="${zapato.imagen}" class="object-cover object-center w-full rounded-md h-72 bg-gray-500">
+                <div class="mt-6 mb-2">
+                    <span class="block text-xs font-medium tracking-widest uppercase">Nombre: <span class=" text-xs font-medium tracking-widest uppercase text-violet-400" th:text="${zapato.nombre}"></span></span>
+                    <h2 class="text-xl font-semibold tracking-wide">Marca: <span class="text-lg tracking-wide text-violet-400" th:text="${zapato.marca}"></span></h2>
+                </div>
+                <p class="text-gray-100">Precio: <span class="text-violet-400" th:text="${zapato.precio}"></span></p>
+                <p class="text-gray-100">Estado: <span class="text-violet-400" th:text="${zapato.estado}"></span></p>
+            </div>
+        </div>
+        <footer th:replace="layout/layout :: footer"></footer>
+    </body>
+</html>

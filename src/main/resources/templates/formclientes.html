@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head"></head>
+<body class="bg-gray-300">
+<header th:replace="layout/layout :: header"></header>
+<section class="p-6 text-gray-50">
+    <form th:action="@{/formclientes}" th:object="${cliente}" method="post" class="container flex flex-col space-y-12 ng-untouched ng-pristine ng-valid m-auto" enctype="multipart/form-data">
+        <fieldset class="grid grid-cols-4 gap-6 p-6 rounded-md shadow-sm bg-gray-900">
+            <div class="space-y-2 col-span-full lg:col-span-1">
+                <p class="font-medium">Información del Cliente</p>
+                <p class="text-xs">Toda la información que el cliente necesita en una factura</p>
+            </div>
+            <div class="grid grid-cols-6 gap-4 col-span-full lg:col-span-3">
+                <div class="col-span-full sm:col-span-3">
+                    <label for="nombre" class="text-sm">Nombre</label>
+                    <input id="nombre" th:field="*{nombre}" type="text" placeholder="Nombre" class="w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 border-gray-700 text-gray-900 p-1">
+                </div>
+                <div class="col-span-full sm:col-span-3">
+                    <label for="apellido" class="text-sm">Apellido</label>
+                    <input id="apellido" th:field="*{apellido}" type="text" placeholder="Apellido" class="w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 border-gray-700 text-gray-900 p-1">
+                </div>
+                <div class="col-span-full">
+                    <label for="email" class="text-sm">Email</label>
+                    <input id="email" th:field="*{email}" type="text" placeholder="Email" class="w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 border-gray-700 text-gray-900 p-1">
+                </div>
+                <div class="col-span-full sm:col-span-2">
+                    <label for="fecha" class="text-sm">Fecha</label>
+                    <input id="fecha" th:field="*{createAt}" type="date" placeholder="Fecha" class="w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 border-gray-700 text-gray-900 p-1">
+                </div>
+                <fieldset class="w-full space-y-1 dark:text-gray-100 col-span-full">
+                    <label for="file" class="block text-sm font-medium">Foto</label>
+                    <div class="flex">
+                        <input type="file" name="file" class="px-8 py-12 border-2 border-dashed rounded-md dark:border-gray-700 dark:text-gray-400 dark:bg-gray-800 w-full">
+                    </div>
+                </fieldset>
+            </div>
+            <div class="col-span-full">
+                <button type="submit" class="px-8 py-3 font-semibold border rounded border-gray-300 text-gray-200 hover:text-gray-900 w-full hover:bg-gray-300 hover:animate-pulse">Enviar</button>
+            </div>
+        </fieldset>
+    </form>
+</section>
+<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>

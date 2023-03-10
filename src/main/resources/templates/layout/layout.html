@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head th:fragment="head">
+		<meta charset="UTF-8" />
+		<title th:text="'Spring Boot: MVC + Thymeleaf + Data JPA - ' + ${titulo}"></title>
+		<script src="https://cdn.tailwindcss.com"></script>
+		<link rel="stylesheet" th:href="@{/css/jquery-ui.min.css}">
+		<link rel="stylesheet" th:href="@{/css/jquery-ui.min.css}" />
+		<script src="https://code.jquery.com/jquery-3.3.1.min.js"
+				integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+				crossorigin="anonymous"></script>
+		<!--script src="https://code.jquery.com/jquery-3.6.3.min.js"></script-->
+		<script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
+	</head>
+	<body>
+		<header class="p-4 bg-gray-800 text-gray-100 fixed top-0 w-full z-10">
+			<div class="container flex justify-between h-8 mx-auto">
+				<a rel="noopener noreferrer" th:href="@{/}" aria-label="Back to homepage" class="flex items-center p-2">
+					<img th:src="@{/images/titulo.png}" class="w-64 hover:animate-pulse" alt="Ies Castelar logo" />
+				</a>
+				<ul class="items-stretch hidden space-x-3 md:flex">
+					<li class="flex">
+						<a rel="noopener noreferrer" th:href="@{/}" class="flex items-center px-4 -mb-1 border-b-2 border-transparent hover:text-violet-500 hover:animate-pulse">Home</a>
+					</li>
+					<li class="flex">
+						<a rel="noopener noreferrer" th:href="@{/listarclientes}" class="flex items-center px-4 -mb-1 border-b-2 border-transparent hover:text-violet-500 hover:animate-pulse">Clientes</a>
+					</li>
+					<li class="flex">
+						<a rel="noopener noreferrer" th:href="@{/listar}" class="flex items-center px-4 -mb-1 border-b-2 border-transparent hover:text-violet-500 hover:animate-pulse">Zapatos</a>
+					</li>
+				</ul>
+				<button class="flex justify-end p-4 md:hidden">
+					<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+					</svg>
+				</button>
+			</div>
+		</header>
+		<header class="p-4 bg-gray-800 text-gray-100">
+			<div class="container flex justify-between h-2.5 mx-auto">
+				<a rel="noopener noreferrer" aria-label="Back to homepage" class="flex items-center p-2">
+					<img class="w-64 hover:animate-pulse" alt="Ies Castelar logo" />
+				</a>
+				<ul class="items-stretch hidden space-x-3 md:flex">
+					<li class="flex">
+						<a rel="noopener noreferrer" class="flex items-center px-4 -mb-1 border-b-2 border-transparent hover:text-violet-500 hover:animate-pulse">Home</a>
+					</li>
+					<li class="flex">
+						<a rel="noopener noreferrer" class="flex items-center px-4 -mb-1 border-b-2 border-transparent hover:text-violet-500 hover:animate-pulse">Clientes</a>
+					</li>
+					<li class="flex">
+						<a rel="noopener noreferrer" class="flex items-center px-4 -mb-1 border-b-2 border-transparent hover:text-violet-500 hover:animate-pulse">Zapatos</a>
+					</li>
+				</ul>
+				<button class="flex justify-end p-4 md:hidden">
+					<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+					</svg>
+				</button>
+			</div>
+		</header>
+		<footer class="px-4 py-8 bg-gray-800 text-gray-400 fixed bottom-0 w-full h-10/12">
+			<div class="container flex flex-wrap items-center justify-center mx-auto space-y-4 sm:justify-between sm:space-y-0 ">
+				<div class="flex flex-row pr-3 space-x-4 sm:space-x-8">
+					<div class="flex items-center justify-center flex-shrink-0 w-64 h-12">
+						<img th:src="@{/images/spring.png}" alt="Spring logo" class="w-16"/>
+						<img th:src="@{/images/titulo.png}" alt="Ies Castelar logo" />
+					</div>
+				</div>
+				<ul class="flex flex-wrap pl-3 space-x-4 sm:space-x-8">
+					<li>
+						<a rel="noopener noreferrer" href="https://iescastelar.educarex.es">
+							<button type="button" class="px-8 py-3 font-semibold border rounded border-gray-100 text-gray-100 hover:bg-gray-300 hover:text-gray-700 hover:animate-pulse">Página del centro</button>
+						</a>
+					</li>
+				</ul>
+			</div>
+			<script th:src="@{/js/jquery-3.3.1.min.js}"></script>
+			<script th:src="@{/js/jquery-ui.min.js}"></script>
+			<script th:src="@{/js/popper.min.js}"></script>
+		</footer>
+	</body>
+</html>

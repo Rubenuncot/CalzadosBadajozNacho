@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head th:replace="layout/layout :: head"></head>
+	<body class="bg-gray-300">
+		<header th:replace="layout/layout :: header"></header>
+		<section class="p-6 text-gray-50">
+			<form th:action="@{/form}" th:object="${zapato}" method="post" class="container flex flex-col space-y-12 ng-untouched ng-pristine ng-valid m-auto">
+				<fieldset class="grid grid-cols-4 gap-6 p-6 rounded-md shadow-sm bg-gray-900">
+					<div class="space-y-2 col-span-full lg:col-span-1">
+						<p class="font-medium">Información del zapato</p>
+						<p class="text-xs">El precio debe llevar un punto. Un ejemplo 14.00</p>
+					</div>
+					<div class="grid grid-cols-6 gap-4 col-span-full lg:col-span-3">
+						<div class="col-span-full sm:col-span-3">
+							<label for="nombre" class="text-sm">Nombre</label>
+							<input id="nombre" th:field="*{nombre}" type="text" placeholder="Nombre" class="w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 border-gray-700 text-gray-900 p-1">
+						</div>
+						<div class="col-span-full sm:col-span-3">
+							<label for="marca" class="text-sm">Marca</label>
+							<input id="marca" th:field="*{marca}" type="text" placeholder="Marca" class="w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 border-gray-700 text-gray-900 p-1">
+						</div>
+						<div class="col-span-full">
+							<label for="imagen" class="text-sm">Url de la Imagen</label>
+							<input id="imagen" th:field="*{imagen}" type="text" placeholder="Imagen" class="w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 border-gray-700 text-gray-900 p-1">
+						</div>
+						<div class="col-span-full sm:col-span-2">
+							<label for="precio" class="text-sm">Precio</label>
+							<input id="precio" th:field="*{precio}" type="number" placeholder="Precio" class="w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 border-gray-700 text-gray-900 p-1">
+						</div>
+						<div class="col-span-full sm:col-span-2">
+							<label for="fecha" class="text-sm">Fecha</label>
+							<input id="fecha" th:field="*{createAt}" type="date" placeholder="" class="w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 border-gray-700 text-gray-900 p-1">
+						</div>
+						<div class="col-span-full sm:col-span-2">
+							<label for="estado" class="text-sm">Estado</label>
+							<input id="estado" th:field="*{estado}" type="text" placeholder="Disponible" class="w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 border-gray-700 text-gray-900 p-1">
+						</div>
+						<div class="col-span-full">
+							<button type="submit" class="px-8 py-3 font-semibold border rounded border-gray-300 text-gray-200 hover:text-gray-900 w-full hover:bg-gray-300 hover:animate-pulse">Enviar</button>
+						</div>
+					</div>
+				</fieldset>
+			</form>
+		</section>
+		<footer th:replace="layout/layout :: footer"></footer>
+	</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="layout/layout :: head"></head>
+<body class="bg-gray-300">
+<header th:replace="layout/layout :: header"></header>
+
+<section class="p-6 text-gray-50">
+    <form novalidate="" action="" class="container flex flex-col mx-auto space-y-12 ng-untouched ng-pristine ng-valid">
+        <fieldset class="grid grid-cols-4 gap-6 p-6 rounded-md shadow-sm bg-gray-900">
+            <div class="space-y-2 col-span-full lg:col-span-1">
+                <p class="font-medium">Crear Factura</p>
+                <p class="text-xs">Crea una factura para este cliente</p>
+            </div>
+            <div class="grid grid-cols-6 gap-4 col-span-full lg:col-span-3">
+                <div class="col-span-full sm:col-span-3">
+                    <label for="cliente" class="text-sm">Cliente</label>
+                    <input id="cliente" type="number" placeholder="ID del Cliente"
+                           class="w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 border-gray-700 text-gray-900 p-2">
+                </div>
+                <div class="col-span-full sm:col-span-3">
+                    <label for="descripcion" class="text-sm">Descripcion</label>
+                    <textarea id="descripcion" placeholder="Descripcion"
+                              class="w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 border-gray-700 text-gray-900 py-5 pl-1"></textarea>
+                </div>
+                <div class="col-span-full">
+                    <label for="observacion" class="text-sm">Observación</label>
+                    <textarea id="observacion" placeholder="Observacion"
+                              class="w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 border-gray-700 text-gray-900 py-5 pl-1"></textarea>
+                </div>
+                <div class="col-span-full">
+                    <button type="submit" class="px-8 py-3 font-semibold border rounded border-gray-300 text-gray-200 hover:text-gray-900 w-full hover:bg-gray-300 hover:animate-pulse">Enviar</button>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+</section>
+<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="layout/layout :: head"></head>
+<body class="bg-gray-800">
+<section class="bg-gray-800 text-gray-100">
+    <div class="container mx-auto flex flex-col items-center px-4 py-16 text-center md:py-32 md:px-10 lg:px-32 xl:max-w-3xl">
+        <h1 class="text-4xl font-bold leading-none sm:text-5xl">Programa de Gestión
+            <span class="text-violet-400">de Calzados Badajoz</span>
+            <span class="text-sm">Rubén Núñez Cotano</span>
+        </h1>
+        <p class="px-8 mt-8 mb-12 text-lg">Desarrollado en el modulo de Acceso a Datos del ciclo de Desarrollo de
+            Aplicaciones Multiplataforma.</p>
+        <div class="flex flex-wrap justify-center">
+            <a th:href="@{/listar}">
+                <button class="px-8 py-3 m-2 text-lg font-semibold rounded bg-violet-400 text-gray-900 hover:animate-pulse">
+                    Listado de Zapatos
+                </button>
+            </a>
+            <a th:href="@{/listarclientes}">
+                <button class="px-8 py-3 m-2 text-lg border rounded dark:text-gray-50 dark:border-gray-700">Listado de Clientes </button>
+            </a>
+        </div>
+    </div>
+</section>
+</body>
+</html>

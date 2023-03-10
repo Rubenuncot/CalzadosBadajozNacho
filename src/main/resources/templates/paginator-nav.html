@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head></head>
+	<body>
+		<nav th:fragment="paginator">
+			<div class="flex justify-center space-x-1 text-gray-100 mt-1">
+				<a th:if="${page.hasPrevious}" th:href="@{${page.url}(page=${page.paginaActual-2})}">
+					<button title="previous" type="button" class="inline-flex items-center justify-center w-8 h-8 py-0 border rounded-md bg-gray-900 hover:animate-pulse">
+						<svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="w-4">
+							<polyline points="15 18 9 12 15 6"></polyline>
+						</svg>
+					</button>
+				</a>
+				<button th:if="${!page.hasPrevious}" title="previous" type="button" class="inline-flex items-center justify-center w-8 h-8 py-0 border rounded-md bg-gray-500">
+					<svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="w-4">
+						<polyline points="15 18 9 12 15 6"></polyline>
+					</svg>
+				</button>
+				<div th:each="item : ${page.paginas}">
+					<a th:if="${not item.actual}" th:href="@{${page.url}(page=${item.numero-1})}">
+						<button type="button" class="inline-flex items-center justify-center w-8 h-8 text-sm border rounded bg-gray-900 hover:animate-pulse" th:text="${item.numero}"></button>
+					</a>
+					<button th:if="${item.actual}" type="button" class="inline-flex items-center justify-center w-8 h-8 text-sm border rounded bg-white text-violet-400 border-gray-600" th:text="${item.numero}"></button>
+				</div>
+				<a th:if="${page.hasNext}" th:href="@{${page.url}(page=${page.paginaActual})}">
+					<button title="next" type="button" class="inline-flex items-center justify-center w-8 h-8 py-0 border rounded-md bg-gray-900 hover:animate-pulse">
+						<svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="w-4">
+							<polyline points="9 18 15 12 9 6"></polyline>
+						</svg>
+					</button>
+				</a>
+				<button th:if="${!page.hasNext}" title="next" type="button" class="inline-flex items-center justify-center w-8 h-8 py-0 border rounded-md bg-gray-500">
+					<svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="w-4">
+						<polyline points="9 18 15 12 9 6"></polyline>
+					</svg>
+				</button>
+			</div>
+		</nav>
+	</body>
+</html>

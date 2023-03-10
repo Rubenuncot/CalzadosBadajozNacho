@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head"></head>
+<body class="bg-gray-300 h-screen">
+<header th:replace="layout/layout :: header"></header>
+<section class="p-6 text-gray-50">
+    <form novalidate="" action=""
+          class="container flex flex-col mx-auto space-y-12 ng-untouched ng-pristine ng-valid mb-40">
+        <fieldset class="grid grid-cols-4 gap-6 p-6 rounded-md shadow-sm bg-gray-900">
+            <div class="space-y-2 col-span-full lg:col-span-1">
+                <img src="https://st.depositphotos.com/2069323/2156/i/600/depositphotos_21568765-stock-photo-casual-businessman-pointing.jpg"
+                     th:alt="${cliente.foto}" class="object-cover object-center w-full rounded-md h-72 bg-gray-500">
+            </div>
+            <div class="grid grid-cols-2 gap-4 col-span-full lg:col-span-3">
+                <h2 class="text-2xl font-semibold sm:text-4xl" th:text="${cliente.nombre}"></h2>
+                <div class="col-span-full sm:col-span-3">
+                    <div class="space-y-4">
+                        <details class="w-full border rounded-lg">
+                            <summary class="cursor-pointer px-4 py-6 focus:outline-none focus-visible:ring-violet-400">Apellidos
+                            </summary>
+                            <p class="px-4 py-6 pt-0 ml-4 -mt-4 text-gray-400" th:text="${cliente.apellido}"></p>
+                        </details>
+                        <details class="w-full border rounded-lg">
+                            <summary class="cursor-pointer px-4 py-6 focus:outline-none focus-visible:ring-violet-400">Correo
+                                Electrónico
+                            </summary>
+                            <p class="px-4 py-6 pt-0 ml-4 -mt-4 text-gray-400" th:text="${cliente.email}"></p>
+                        </details>
+                        <details class="w-full border rounded-lg">
+                            <summary class="cursor-pointer px-4 py-6 focus:outline-none focus-visible:ring-violet-400">Lista de
+                                facturas
+                            </summary>
+                            <div class="container p-2 mx-auto sm:p-4 dark:text-gray-100">
+                                <div class="overflow-x-auto">
+                                    <table class="min-w-full text-xs">
+                                        <colgroup>
+                                            <col>
+                                            <col>
+                                            <col>
+                                            <col>
+                                            <col>
+                                            <col class="w-24">
+                                        </colgroup>
+                                        <thead class="dark:bg-gray-700">
+                                        <tr class="text-left">
+                                            <th class="p-3">Folio</th>
+                                            <th class="p-3">Descripcion</th>
+                                            <th class="p-3">Fecha</th>
+                                            <th class="p-3">Total</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr th:each="factura: ${cliente.facturas}" class="border-b border-opacity-20 dark:border-gray-700 dark:bg-gray-900">
+                                            <td class="p-3">
+                                                <p th:text="${factura.id}"></p>
+                                            </td>
+                                            <td class="p-3">
+                                                <p th:text="${factura.descripcion}"></p>
+                                            </td>
+                                            <td class="p-3">
+                                                <p th:text="${factura.createAt}"></p>
+                                            </td>
+                                            <td class="p-3">
+                                                <span class="px-3 py-1 font-semibold rounded-md dark:bg-violet-400 dark:text-gray-900">
+                                                    <span th:text="${factura.total} + ' €'"></span>
+                                                </span>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </details>
+                    </div>
+                    <div class="flex flex-column justify-end w-full mt-8">
+                        <a th:href="@{/factura/form} + '/' + ${cliente.id}" class="w-3/12">
+                            <button type="button"
+                                    class="px-8 py-3 font-semibold border rounded border-gray-900 bg-violet-400 w-full text-gray-900 hover:animate-pulse mt-1">
+                                Crear Factura
+                            </button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+</section>
+<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>

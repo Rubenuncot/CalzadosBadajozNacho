@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<table th:fragment="itemsFactura" class="none">
+
+  <tbody id="plantillaItemsFactura">
+  <tr id="row_{ID}">
+    <td class="d-none"><input type="hidden" value="{ID}"
+                              name="item_id[]"/></td>
+    <td>{NOMBRE}</td>
+    <td>{PRECIO} €</td>
+    <td><input type="number" value="1" name="cantidad[]"
+               id="cantidad_{ID}" class="w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 border-gray-700 text-gray-900 p-1"
+               onchange="itemsHelper.calcularImporte({ID}, {PRECIO}, this.value);"/></td>
+    <td><span id="total_importe_{ID}">0</span><span>€</span></td>
+    <td><a href="#" class="" onclick="itemsHelper.eliminarLineaFactura({ID});">x</a></td>
+  </tr>
+  </tbody>
+
+</table>
+
+</body>
+</html>
